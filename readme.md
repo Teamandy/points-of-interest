@@ -1,0 +1,1 @@
+Search for points of interest nearby
