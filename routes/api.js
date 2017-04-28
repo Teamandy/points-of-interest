@@ -6,13 +6,21 @@ const Route = require('../models/route')
 const Points = require('../models/poi')
 const User = require('../models/user')
 
+//get station coordinates from the DB
+router.get('/poi/:station', (req, res) => {
+    Station.findOne({title: req.params.station}).then((station)=>{
+        const coords = station.geometry.coordinates
+        res.send(coords)
+    })
+})
+
 //get POI from the DB
 router.get('/poi', (req, res) => {
     Points.geoNear({
         type: 'Point',
         coordinates: [parseFloat(req.query.lon), parseFloat(req.query.lat)]
     }, {
-        maxDistance: 50000,
+        maxDistance: 300000, // search for 300km around 
         spherical: true
     }).then((points) => {
         res.send(points)

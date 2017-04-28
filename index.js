@@ -9,8 +9,19 @@ const app = express()
 mongoose.connect('mongodb://localhost/pointsOfInterest')
 mongoose.Promise = global.Promise
 
+//template engine
+app.set('view engine', 'ejs')
+
+//connecting our static files
+app.use(express.static('public'))
+
 //body parsing before routes processing
 app.use(bodyParser.json())
+
+//loading home page
+app.get('/home', (req, res)=>{
+    res.render('home')
+})
 
 //handling API requests
 app.use('/api', routes)

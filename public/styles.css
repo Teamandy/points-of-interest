@@ -1,0 +1,75 @@
+body{
+    font-family: Raleway;
+    color: #555;
+    background: #ff5252;
+    margin: 10px 30px;
+}
+#homepage{
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 10px 20px;
+    background: #fdfdfd;
+    border-radius: 4px;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+input[type="text"]{
+    display: block;
+    width: 300px;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+label{
+    font-weight: bold;
+}
+.main-title{
+    color: #fff;
+    text-align: center;
+    font-size: 48px;
+}
+#homepage h1,
+#homepage h2{
+    text-align: center;
+}
+form{
+    max-width: 350px;
+    margin: 30px auto;
+}
+input[type="submit"]{
+    background: #555;
+     color: #fff;
+     border: 0;
+     padding: 10px;
+     font-size: 18px;
+     width: 200px;
+     margin: 0 auto;
+     display: block;
+     cursor: pointer;
+     border-radius: 4px;
+ }
+table{
+     width: 100%;
+}
+tr{
+    padding: 15px 0;
+    background: #555555;
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    border-radius: 4px;
+    color: white;
+}
+span{
+    display: inline-block;
+    margin: 0 20px;
+}
+span.dist{
+    float: right;
+}
+span svg{
+    height: 1.5em;
+    width: 1.5em;
+    color: #E1FF00;
+}
