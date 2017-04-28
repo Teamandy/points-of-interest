@@ -10,7 +10,7 @@ render(
     <Router>
         <div>
             <Route exact path='/home' component={Layout}/>
-            <Route path='/home/route-details' component={RouteDetails}/>
+            <Route path='/home/route/:id' component={RouteDetails}/>
         </div>
     </Router>
 , app)

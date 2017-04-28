@@ -6,13 +6,29 @@ const Route = require('../models/route')
 const Points = require('../models/poi')
 const User = require('../models/user')
 
-//get station coordinates from the DB
+//get station coordinates and code from the DB
 router.get('/poi/:station', (req, res) => {
-    Station.findOne({title: req.params.station}).then((station)=>{
+    Station.findOne({ title: req.params.station }).then((station) => {
         const coords = station.geometry.coordinates
-        res.send(coords)
+        const code = station.code
+        res.send({ coords, code })
     })
 })
+
+//get route from the DB
+router.get('/route', (req, res) => {
+    if (req.query.id) {
+        Route.findOne({ _id: req.query.id }).then((route) => {
+            res.send(route)
+        })
+    } else {
+        Route.findOne({ origin: req.query.origin, destination: req.query.dest }).then((route) => {
+            res.send(route)
+        })
+    }
+
+})
+
 
 //get POI from the DB
 router.get('/poi', (req, res) => {
@@ -20,11 +36,11 @@ router.get('/poi', (req, res) => {
         type: 'Point',
         coordinates: [parseFloat(req.query.lon), parseFloat(req.query.lat)]
     }, {
-        maxDistance: 300000, // search for 300km around 
-        spherical: true
-    }).then((points) => {
-        res.send(points)
-    })
+            maxDistance: 300000, // search for 300km around 
+            spherical: true
+        }).then((points) => {
+            res.send(points)
+        })
 })
 
 //post POI to the DB

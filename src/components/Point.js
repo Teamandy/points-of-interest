@@ -1,18 +1,31 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Star from 'react-icons/lib/md/star'
+import axios from 'axios'
+import PointLine from './PointLine'
 
 class Point extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            routeId: ''
+        }
+    }
+
+    componentWillMount() {
+        const origin = this.props.currStation
+        const destination = this.props.poi.obj.station
+        axios.get(`/api/route?origin=${origin}&dest=${destination}`).then((response) => {
+            this.setState({
+                routeId: response.data._id
+            })
+        })
+    }
+
     render() {
-        const { title, rating, station} = this.props.poi.obj
+        const { title, rating, station } = this.props.poi.obj
+        const dis = this.props.poi.dis
+        const id = this.state.routeId
         return (
-            <tr>
-                <td><span className='title'>{title}</span></td>
-                <td><span className='rating'>{rating}<Star /></span></td>
-                <td><span className='station'>{station}</span></td>
-                <td><span className='dist'>{Math.floor(this.props.poi.dis / 1000)}km</span></td>
-                <td><Link to='/home/route-details'><span className='route'>details</span></Link></td>
-            </tr>
+            <PointLine title={title} rating={rating} station={station} dis={dis} id={id} />
         )
     }
 }

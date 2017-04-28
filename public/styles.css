@@ -36,7 +36,8 @@ form{
     max-width: 350px;
     margin: 30px auto;
 }
-input[type="submit"]{
+input[type="submit"],
+button.back{
     background: #555;
      color: #fff;
      border: 0;
@@ -48,8 +49,13 @@ input[type="submit"]{
      cursor: pointer;
      border-radius: 4px;
  }
+ a{
+     text-decoration: none;
+ }
 table{
      width: 100%;
+     margin-bottom: 20px;
+     text-align: center;
 }
 tr{
     padding: 15px 0;
@@ -61,12 +67,19 @@ tr{
     border-radius: 4px;
     color: white;
 }
+th.sort{
+    cursor: pointer;
+    color: #86B518;
+}
 span{
     display: inline-block;
     margin: 0 20px;
 }
 span.dist{
     float: right;
+}
+span.route{
+    color: #E1FF00;
 }
 span svg{
     height: 1.5em;
